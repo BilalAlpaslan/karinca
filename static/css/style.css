@@ -1,0 +1,186 @@
+.footer {
+    background-color: blue;
+}
+::selection{
+    background-color:black;
+    color:yellow;
+}
+.baslik-y {
+    border-left: 0.3rem solid black;
+    padding-left: 0.5rem;
+    font-family: 'Mukta', sans-serif;
+}
+
+#ata {
+    font-size: 1.2rem;
+}
+
+.link-o {
+    color: darkred;
+}
+
+.link-o:hover {
+    color: #f5a29c;
+    transition: 0.3s;
+}
+
+.link-o2 {
+    color: #007bff;
+}
+
+.btn-o2:hover {
+    box-shadow: 0 0 0.8rem 0 darkred;
+    transition: 0.3s;
+}
+
+.link-o2:hover {
+    color: darkblue;
+}
+
+.nav-o {
+    font-size: 1rem;
+}
+
+.btn-o {
+    font-size: 0.7rem;
+    margin-bottom: 0.4rem;
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+.anahtar-o:hover {
+    box-shadow: 0 0 0.8rem 0 darkblue;
+    transition: 0.3s;
+}
+
+.btn-o:hover {
+    box-shadow: 0 0 0.8rem 0 red;
+    transition: 0.3s;
+}
+
+.anahtar {
+    width: 10rem;
+}
+
+.üst {
+    border-radius: 1.5rem;
+    background-color: black;
+    box-shadow: 0 0 0.7rem 0 black;
+}
+
+.kategori-o {
+    padding-right: 1rem;
+}
+
+.film-o {
+    border-radius: 1rem;
+    background-color: #ddd;
+    box-shadow: 0 0 0.2rem 0 black;
+}
+
+.film-o:hover {
+    box-shadow: 0 0 0.8rem 0 darkred;
+}
+
+.cikis {
+    font-size: 1.3rem;
+}
+
+.ara-icon {
+    display: none;
+    color: #ddd
+}
+
+.bilal {
+    display: none;
+}
+
+#logo-o {
+    font-size: 1.7rem;
+    position: absolute;
+    top: 15px;
+    right: 47%;
+}
+
+.link-a{
+    text-decoration: none;
+    color:black;
+}
+.link-a:hover{
+    text-decoration: none;
+    color:black;
+}
+.icon-s{
+    margin-right:15px;
+}
+
+
+
+
+
+body {
+    background-color: #f5f4f4 !important;
+}
+
+@media(max-width: 990px) {
+    .kayit {
+        font-size: 1rem;
+        display: inline;
+    }
+    .bilal {
+        display: inline-block;
+        position: absolute;
+        top: 20px;
+        left: 15px;
+    }
+    #logo-o {
+        position: absolute;
+        right: 35%;
+        font-size: 1rem;
+    }
+    #yazi {
+        font-size: 1rem;
+    }
+    .nav-o {
+        display: none !important;
+    }
+    #baslik-o {
+        font-size: 3.3rem !important;
+    }
+    #kategori-o3 {
+        font-size: 3.3rem !important;
+    }
+    .ara-o {
+        display: none;
+    }
+    /**
+
+
+	.nav-o{
+	  position: absolute;
+	  left: 0px;
+
+	}
+
+	#anasayfa{
+		padding-top: 30px;
+		color: black;
+	}
+
+	#içerikler{
+    padding-top: 60px;
+    color: black;
+	}
+
+	#hakkinda{
+		padding-top: 90px;
+		color: black;
+	}
+
+	.nav-o{
+		display: none;
+	}
+**/
+}

@@ -1,0 +1,132 @@
+<header>
+        <div  class="navbar navbar-expand-sm bg-dark navbar-dark ">
+            <div class="container">
+
+                
+                <ul class="navbar-nav mr-auto">
+
+                   
+                    <li 
+                        {% if request.path == '/' %}
+                            class="nav-item active "
+                        {% else %}
+                            class="nav-item "
+                        {% endif %}
+                    >
+                        <a id="anasayfa"  href="{% url 'index' %}" class="nav-link nav-o "><b>Anasayfa</b></a>
+                    </li>
+                    <li  
+                        {% if 'movies' in request.path %}
+                            class="nav-item active  "
+                        {% else %}
+                            class="nav-item "
+                        {% endif %} 
+                    >
+                        <a id="içerikler"  href="{% url 'movies' %}" class="nav-link nav-o "><b>İçerikler</b></a>
+                    </li>
+                     <li
+                        {% if 'index' in request.path %}
+                            class="nav-item active  "
+                        {% else %}
+                             class="nav-item "
+                        {% endif %}                    
+                    >
+                        <a id="hakkinda"  href="{% url 'about' %}" class="nav-link nav-o "><b>Hakkında</b></a>
+
+                    </li>
+                    <li   class="nav-item active"  >
+                        <a  id="logo-o"  href="{% url 'index' %}" class="nav-link ">KARINCA CENTER</a>
+
+                        
+                    </li>
+
+                    <div style="position: absolute;top: 1rem !important;" class="dropdown show bilal">
+                <a class="btn btn-secondary dropdown-bars" href="#" role="button" data-toggle="dropdown">
+                    <i class="fas fa-bars"></i>
+                </a>
+
+                <div style="position: relative;" class="dropdown-menu " >
+                    <a class="dropdown-item" href="{% url 'index' %}">Anasayfa</a>
+                    <a class="dropdown-item" href="{% url 'movies' %}">İçerikler</a>
+                    <a class="dropdown-item" href="{% url 'about' %}">Hakkımızda</a>
+                   <a class="dropdown-item " href="#">
+                    <form >
+                        {%csrf_token%}
+                       <input style=" border-top-left-radius:  1rem; border-bottom-left-radius:  1rem;" type="text" name="keyword" class="input-sm ">
+                       <button style="border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; " class="btn btn-danger btn-o " type="submit">Ara</button>
+                    </form>
+
+                   </a>
+
+                    <!--<ul>
+                    <div class=" ">
+                    <form style="padding-top: 1rem;">
+
+                        {%csrf_token%}
+                        <input style=" position: relative; left: 0px;  border-top-left-radius:  1rem; border-bottom-left-radius:  1rem; padding-top: 0.01rem; margin-right: 0" type="text" name="keyword" class="input-sm " maxlength="64">
+                        <button style="border-bottom-right-radius: 1rem; border-top-right-radius: 1rem; margin-left: 0" type="submit" class="btn btn-danger btn-o ">Ara</button>
+
+                        
+                        <a class="ara-icon" href=""><i class="fas fa-search"></i></a>
+                    </form>
+                    </div>
+                </ul>-->
+                    </div>
+                </div>  
+
+                </ul>
+                <ul>
+                    <div class="col-lg-12 ">
+                    <form style="padding-top: 1rem;">
+                        {%csrf_token%}
+                        <input style="border-top-left-radius: 1rem;
+                        border-bottom-left-radius: 1rem; padding-top: 0.01rem;" type="text" name="keyword" class="input-sm anahtar anahtar-o ara-o" maxlength="64">
+                        <button style="border-bottom-right-radius: 1rem;
+                        border-top-right-radius: 1rem; margin-top: 0.3rem;" type="submit" class="btn btn-danger btn-o ara-o">Ara</button>
+                        
+                    </form>
+                    </div>
+                </ul>
+
+                
+                <ul class="navbar-nav">
+
+                    {% if user.is_authenticated %}    
+                        <li class="nav-item">
+                             <a  href="javascript:{document.getElementById('logout').submit()}" class="nav-link cikis"> <!--{{ user.username}}-->
+                            </b><span style="padding-left: 0.7rem;"><i class="fas fa-sign-out-alt"></i> </span></a>
+
+                             <form action="{% url 'logout' %}" method="POST" id="logout">
+                                 {%csrf_token%}
+                                  <input type="hidden">  
+                             </form>
+                        </li>  
+
+                        
+                    {% else %}
+                        <li 
+                        {% if 'login' in request.path %} 
+                            class="nav-item active"
+                        {% else %}
+                            class="nav-item"
+                        {% endif %}
+                         >
+                        <a   href="{% url 'login' %}" class="nav-link kayit"><b>Giriş Yap</b></a>
+                    </li> 
+
+
+                    <li 
+                        {% if 'register' in request.path %} 
+                            class="nav-item active"
+                        {% else %}
+                            class="nav-item"
+                        {% endif %}
+                    >
+                    <a   href="{% url 'register' %}" class="nav-link kayit"><b>Kayıt ol</b></a>
+
+                    {% endif %}                  
+                     
+                </ul>
+            </div>
+        </div>
+</header>

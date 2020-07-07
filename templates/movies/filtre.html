@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-md-12">
+        {% if movies %}
+            {% for movie in movies %}
+                <div class="card mb-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        {% if movie.image %} 
+                            <img class="card-img" src="{{movie.image.url}}" alt="">
+                        {% endif %} 
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <div class="card-title"> 
+                                <a href="{% url 'detail' movie.id %}"> {{ movie.name }}</a>
+                             </div>
+                            <p class="card-text">
+                                    {{ movie.description|safe|truncatewords:30 }} 
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">{{ movie.created_date | timesince }} önce eklendi</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
+
+        {% else %}
+            <div class="alert alert-warning">
+                <p>
+                    Kayıt bulunamadı
+                </p>
+            </div>
+        {% endif %}      
+     
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    {% if aboutP %}
+    	{% for about in aboutP %}
+    <h1>
+      
+        {{ about.baslik }}
+    </h1><br><br>
+    <p>
+        {{ about.icerik | safe }}
+	</p><br><br>
+		{% endfor %}
+    {% endif %}
+
+
+    <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=NEW%20york&amp;t=m&amp;z=14&amp;output=embed&amp;iwloc=near" aria-label=" istanbul"></iframe>
+
+    <img style="max-width: 1000px" src="media/iron.jpeg">
+{% endblock %}
