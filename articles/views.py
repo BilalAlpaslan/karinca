@@ -29,8 +29,8 @@ def index(request):
         return render(request, 'articles/list.html', context)
 
 
-def detail(request, movie_id):
-    articles = get_object_or_404(Articles, pk = movie_id)
+def detail(request, articles_id):
+    articles = get_object_or_404(Articles, pk = articles_id)
     comments = articles.comments.all()
     context = {
         'articles': articles,
@@ -41,8 +41,8 @@ def detail(request, movie_id):
 
 
 @login_required(login_url = "login")
-def addComment(request,movie_id):
-    articles = get_object_or_404(Articles, pk = movie_id)
+def addComment(request,articles_id):
+    articles = get_object_or_404(Articles, pk = articles_id)
 
     if request.method == "POST":
         comment_author = request.user.username
@@ -52,7 +52,7 @@ def addComment(request,movie_id):
         newComment.articles = articles
         newComment.save()
 
-    return redirect(reverse("detail",kwargs={"movie_id":movie_id}))
+    return redirect(reverse("detail",kwargs={"articles_id":articles_id}))
     
 
 def filtre(request,kategori_id):

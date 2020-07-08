@@ -22,26 +22,26 @@
 
 <div class="row">
     <div class="col-md-12">
-        {% if movies %}
-            {% for movie in movies %}
-            <a class="link-a" href="{% url 'detail' movie.id %}">
+        {% if articles %}
+            {% for articles in articles %}
+            <a class="link-a" href="{% url 'detail' articles.id %}">
                 <div  class="card mb-3 film-o">
                     <div class="row">
                         <div class="col-md-3">
-                            {% if movie.image %}
-                                <img class="card-img" src="{{movie.image.url}}" alt="">
+                            {% if articles.image %}
+                                <img class="card-img" src="{{articles.image.url}}" alt="">
                             {% endif %}
                         </div>
                         <div class="col-md-9">
                             <div class="card-body">
                                 <div class="card-title">
-                                     {{ movie.name }}
+                                     {{ articles.name }}
                                 </div>
                                 <p class="card-text">
-                                        {{ movie.description|safe|truncatewords:30}}
+                                        {{ articles.description|safe|truncatewords:30}}
                                 </p>
                                 <p class="card-text">
-                                    <small class="text-muted">{{ movie.created_date | timesince }} önce eklendi</small>
+                                    <small class="text-muted">{{ articles.created_date | timesince }} önce eklendi</small>
                                 </p>
                             </div>
                         </div>
