@@ -1,7 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 
-class Movie(models.Model):
+class Articles(models.Model):
     author = models.ForeignKey("auth.User",on_delete = models.CASCADE,verbose_name = "Yazar ")
     name = models.CharField(max_length=100, verbose_name='Başlık')
     description = RichTextField()
@@ -25,7 +25,7 @@ class Movie(models.Model):
         
 
 class Comment(models.Model):
-    movie = models.ForeignKey(Movie,on_delete = models.CASCADE,verbose_name = "Makale",related_name="comments")
+    movie = models.ForeignKey(Articles,on_delete = models.CASCADE,verbose_name = "Makale",related_name="comments")
     comment_author = models.CharField(max_length = 50,verbose_name = "İsim")
     comment_content = models.CharField(max_length = 200,verbose_name = "Yorum")
     comment_date = models.DateTimeField(auto_now_add=True)

@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404,reverse,redirect,HttpResponse
 from django.contrib.auth.decorators import login_required  
 from django.http import Http404
-from .models import Movie,Comment,Kategori
+from .models import Articles,Comment,Kategori
 from django.contrib.auth.models import User
 from django.contrib import auth
 
@@ -11,53 +11,53 @@ def index(request):
     kategori = Kategori.objects.all()
 
     if keyword:
-        movies = Movie.objects.all().filter(isPublished = 1).filter(name__contains = keyword)
+        articles = Articles.objects.all().filter(isPublished = 1).filter(name__contains = keyword)
 
         context = {
-        'movies': movies,
+        'articles': articles,
         'kategori': kategori
         }
-        return render(request,'movies/list.html', context)
+        return render(request,'articles/list.html', context)
 
     else:
-        movies = Movie.objects.all().filter(isPublished = 1)
+        articles = Articles.objects.all().filter(isPublished = 1)
 
         context = {
-            'movies': movies,
+            'articles': articles,
             'kategori': kategori
         }
-        return render(request, 'movies/list.html', context)
+        return render(request, 'articles/list.html', context)
 
 
 def detail(request, movie_id):
-    movie = get_object_or_404(Movie, pk = movie_id)
-    comments = movie.comments.all()
+    articles = get_object_or_404(Articles, pk = movie_id)
+    comments = articles.comments.all()
     context = {
-        'movie': movie,
+        'articles': articles,
         "comments":comments
     }
-    return render(request, 'movies/detail.html', context)
+    return render(request, 'articles/detail.html', context)
 
 
 
 @login_required(login_url = "login")
 def addComment(request,movie_id):
-    movie = get_object_or_404(Movie, pk = movie_id)
+    articles = get_object_or_404(Articles, pk = movie_id)
 
     if request.method == "POST":
         comment_author = request.user.username
         comment_content = request.POST.get("comment_content")
 
         newComment = Comment(comment_author  = comment_author, comment_content = comment_content)
-        newComment.movie = movie
+        newComment.articles = articles
         newComment.save()
 
     return redirect(reverse("detail",kwargs={"movie_id":movie_id}))
     
 
 def filtre(request,kategori_id):
-    movies = Movie.objects.all().filter(isPublished = 1).filter(category = kategori_id)
+    articles = Articles.objects.all().filter(isPublished = 1).filter(category = kategori_id)
     context = {
-        'movies': movies
+        'articles': articles
     }
-    return render(request, 'movies/filtre.html', context)
+    return render(request, 'articles/filtre.html', context)

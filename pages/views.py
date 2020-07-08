@@ -1,25 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from movies.models import Movie
+from articles.models import Articles
 from .models import Duyuru,AboutP
 
 
 def index(request):
     keyword = request.GET.get("keyword")
     if keyword:
-        movies = Movie.objects.all().filter(isPublished = 1).filter(name__contains = keyword)
+        articles = Articles.objects.all().filter(isPublished = 1).filter(name__contains = keyword)
 
         context = {
-        'movies': movies
+        'articles': articles
         }
-        return render(request,'movies/list.html', context)
+        return render(request,'articles/list.html', context)
 
     else:
-        movies = Movie.objects.filter(isPublished = 1).filter( thisNew = 1 )
+        articles = Articles.objects.filter(isPublished = 1).filter( thisNew = 1 )
         duyuru = Duyuru.objects.filter(isPublished = 1).filter( thisNew = 1 )
  
         context = {
-            'movies': movies ,
+            'articles': articles ,
             'duyuru': duyuru
         }
     
