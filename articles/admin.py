@@ -1,22 +1,17 @@
 from django.contrib import admin
-from .models import Articles,Comment,Kategori
+from .models import Article,Comment
 
 
 
 admin.site.register(Comment)
 
-class ArticlesAdmin(admin.ModelAdmin):
+class ArticleAdmin(admin.ModelAdmin):
     list_display = ('id','name',"author",'created_date','isPublished',"thisNew")
     list_display_links = ('id','name')
     list_filter = ('created_date',)
     list_editable = ('isPublished',"thisNew")
     search_fields = ('name','description')
     list_per_page = 20
-admin.site.register(Articles, ArticlesAdmin)
+admin.site.register(Article, ArticleAdmin)
 
 
-
-class KategoriAdmin(admin.ModelAdmin):
-	list_display = ('id','name','text')
-	list_display_links = ('id','name')
-admin.site.register(Kategori, KategoriAdmin)

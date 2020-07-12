@@ -23,25 +23,25 @@
 <div class="row">
     <div class="col-md-12">
         {% if articles %}
-            {% for articles in articles %}
+            {% for article in articles %}
             <a class="link-a" href="{% url 'detail' articles.id %}">
                 <div  class="card mb-3 film-o">
                     <div class="row">
                         <div class="col-md-3">
-                            {% if articles.image %}
+                            {% if article.image %}
                                 <img class="card-img" src="{{articles.image.url}}" alt="">
                             {% endif %}
                         </div>
                         <div class="col-md-9">
                             <div class="card-body">
                                 <div class="card-title">
-                                     {{ articles.name }}
+                                     {{ article.name }}
                                 </div>
                                 <p class="card-text">
-                                        {{ articles.description|safe|truncatewords:30}}
+                                        {{ article.description|safe|truncatewords:30}}
                                 </p>
                                 <p class="card-text">
-                                    <small class="text-muted">{{ articles.created_date | timesince }} önce eklendi</small>
+                                    <small class="text-muted">{{ article.created_date | timesince }} önce eklendi</small>
                                 </p>
                             </div>
                         </div>

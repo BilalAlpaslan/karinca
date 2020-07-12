@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404,reverse,redirect,HttpResponse
 from django.contrib.auth.decorators import login_required  
 from django.http import Http404
-from .models import Articles,Comment,Kategori
+from .models import Article,Comment
 from django.contrib.auth.models import User
 from django.contrib import auth
 
@@ -11,7 +11,7 @@ def index(request):
     kategori = Kategori.objects.all()
 
     if keyword:
-        articles = Articles.objects.all().filter(isPublished = 1).filter(name__contains = keyword)
+        articles = Article.objects.all().filter(isPublished = 1).filter(name__contains = keyword)
 
         context = {
         'articles': articles,
@@ -20,7 +20,7 @@ def index(request):
         return render(request,'articles/list.html', context)
 
     else:
-        articles = Articles.objects.all().filter(isPublished = 1)
+        articles = Article.objects.all().filter(isPublished = 1)
 
         context = {
             'articles': articles,
@@ -30,7 +30,7 @@ def index(request):
 
 
 def detail(request, articles_id):
-    articles = get_object_or_404(Articles, pk = articles_id)
+    articles = get_object_or_404(Article, pk = articles_id)
     comments = articles.comments.all()
     context = {
         'articles': articles,
@@ -42,7 +42,7 @@ def detail(request, articles_id):
 
 @login_required(login_url = "login")
 def addComment(request,articles_id):
-    articles = get_object_or_404(Articles, pk = articles_id)
+    articles = get_object_or_404(Article, pk = articles_id)
 
     if request.method == "POST":
         comment_author = request.user.username
@@ -54,10 +54,3 @@ def addComment(request,articles_id):
 
     return redirect(reverse("detail",kwargs={"articles_id":articles_id}))
     
-
-def filtre(request,kategori_id):
-    articles = Articles.objects.all().filter(isPublished = 1).filter(category = kategori_id)
-    context = {
-        'articles': articles
-    }
-    return render(request, 'articles/filtre.html', context)
