@@ -8,14 +8,12 @@ from django.contrib import auth
 
 def index(request):
     keyword = request.GET.get("keyword")
-    kategori = Kategori.objects.all()
 
     if keyword:
         articles = Article.objects.all().filter(isPublished = 1).filter(name__contains = keyword)
 
         context = {
         'articles': articles,
-        'kategori': kategori
         }
         return render(request,'articles/list.html', context)
 
@@ -24,7 +22,6 @@ def index(request):
 
         context = {
             'articles': articles,
-            'kategori': kategori
         }
         return render(request, 'articles/list.html', context)
 
