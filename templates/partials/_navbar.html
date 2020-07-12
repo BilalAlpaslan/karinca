@@ -16,16 +16,16 @@
                         <a id="anasayfa"  href="{% url 'index' %}" class="nav-link nav-o "><b>Anasayfa</b></a>
                     </li>
                     <li  
-                        {% if 'movies' in request.path %}
+                        {% if 'articles' in request.path %}
                             class="nav-item active  "
                         {% else %}
                             class="nav-item "
                         {% endif %} 
                     >
-                        <a id="içerikler"  href="{% url 'movies' %}" class="nav-link nav-o "><b>İçerikler</b></a>
+                        <a id="içerikler"  href="{% url 'articles' %}" class="nav-link nav-o "><b>İçerikler</b></a>
                     </li>
                      <li
-                        {% if 'index' in request.path %}
+                        {% if 'about' in request.path %}
                             class="nav-item active  "
                         {% else %}
                              class="nav-item "
@@ -47,7 +47,7 @@
 
                 <div style="position: relative;" class="dropdown-menu " >
                     <a class="dropdown-item" href="{% url 'index' %}">Anasayfa</a>
-                    <a class="dropdown-item" href="{% url 'movies' %}">İçerikler</a>
+                    <a class="dropdown-item" href="{% url 'articles' %}">İçerikler</a>
                     <a class="dropdown-item" href="{% url 'about' %}">Hakkımızda</a>
                    <a class="dropdown-item " href="#">
                     <form >

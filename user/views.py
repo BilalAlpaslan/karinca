@@ -26,8 +26,6 @@ def register(request):
         
         # get form values
         username = request.POST['username']
-        name = request.POST['name']
-        surname = request.POST['surname']
         email = request.POST['email']
         password = request.POST['password']
         repassword = request.POST['repassword']
@@ -43,7 +41,7 @@ def register(request):
                     return redirect('register')  
                 else:
                     # her şey güzel
-                    user = User.objects.create_user(username=username,name=name,surname=surname, password= password,email=email)
+                    user = User.objects.create_user(username=username,password= password,email=email)
                     user.save()
                     auth.login(request,user)
                     messages.add_message(request, messages.SUCCESS, 'Hesabınız oluşturuldu.')
